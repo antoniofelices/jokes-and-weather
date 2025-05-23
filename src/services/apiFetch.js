@@ -1,22 +1,14 @@
-const API_URL = 'https://icanhazdadjoke.com/slack'
-
-export async function fetchAJoke() {
+export async function fetchAData(apiURL, apiHeaders) {
     try {
-        let headersResponse = {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-            },
-        }
-        const response = await fetch(API_URL, headersResponse)
-        const textResponseFail = `Error when fetch data`
+        const response = await fetch(apiURL, apiHeaders)
+        const textResponseFail = `Fail when fetch data. URL or Headers HTTP status:`
         if (!response.ok) {
-            throw new Error(textResponseFail)
+            throw new Error(`${textResponseFail} ${response.status}`)
         }
         const data = await response.json()
         return data
     } catch (error) {
-        const textConsoleError = `fetchAllJokes error:`
+        const textConsoleError = `Cannot fetch data. Error:`
         console.error(textConsoleError, error)
         return []
     }
