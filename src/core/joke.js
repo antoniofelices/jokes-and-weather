@@ -1,27 +1,24 @@
 import reportJokes from '@data/reportJokes'
 
 async function createEntry(data) {
-    // almaceno en una var el valor del dia y hora.
     // Construyo objeto
     //
     const entry = {
-        joke: `${data.attachments[0].fallback}`,
+        joke: `${data}`,
         score: 0,
-        date: new Date(),
+        date: new Date().toISOString(),
     }
     return entry
 }
 
-async function saveEntry(value) {
+async function saveEntry(data) {
     try {
-        const resultToSave = createEntry(value)
-        results.push(resultToSave)
+        reportJokes.push(data)
     } catch (error) {
         const resultsLocal = []
         const messageNotConnect =
             'Cannot connect to the external database, saving data in local'
-        const resultToSaveLocal = createEntryObject(value)
-        resultsLocal.push(resultToSaveLocal)
+        resultsLocal.push(data)
         console.error(`${error.message}. ${messageNotConnect}`)
     }
 }
