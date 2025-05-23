@@ -6,3 +6,11 @@ import { resultJoke, rankingJoke, showJoke } from '@ui/selectors'
 // rankingJoke.submit() esto es un autoenvio del form, no hace falta boton de submit
 // Solo envia dato Number(input.value), no manipula dato.
 // Envia numero.
+
+async function scoreJoke() {
+    // Aca se imprime en pantalla el Joke y los botones de ranking
+    // resultJoke.textContent('')
+    // resultJoke.textContent = data1.joke
+}
+
+export default scoreJoke

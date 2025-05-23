@@ -9,8 +9,9 @@ import { fetchAData } from '@services/apiFetch'
 import { createEntry, saveEntry } from '@core/joke'
 import { getCoordinates } from '@core/weather'
 import { showJoke } from '@ui/selectors'
-import printJoke from '@ui/printJoke'
+import printMainContent from '@ui/printMainContent'
 import printWeather from '@ui/printWeather'
+import scoreJoke from '@ui/listeners/scoreJoke'
 
 // Es un listener… pero no esta manipulando el DOM per-se… esta desatando todo: consulta API, crea objeto, imprime en pantalla, tot
 
@@ -45,7 +46,8 @@ async function initJoke() {
                 ? await createEntry(dataJokes1.joke)
                 : await createEntry(dataJokes2.value)
 
-        printJoke(entry)
+        printMainContent(entry)
+        scoreJoke()
         saveEntry(entry)
 
         exchanger = exchanger === true ? false : true
