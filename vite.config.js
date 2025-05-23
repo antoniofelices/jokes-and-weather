@@ -11,6 +11,7 @@ export default defineConfig({
             '@services': path.resolve(__dirname, './src/services'),
             '@styles': path.resolve(__dirname, './src/styles'),
             '@ui': path.resolve(__dirname, './src/ui'),
+            '@helpers': path.resolve(__dirname, './src/helpers'),
             '@tests': path.resolve(__dirname, './src/__tests__'),
         },
     },

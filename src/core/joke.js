@@ -1,8 +1,6 @@
 import reportJokes from '@data/reportJokes'
 
 async function createEntry(data) {
-    // Construyo objeto
-    //
     const entry = {
         joke: `${data}`,
         score: 0,

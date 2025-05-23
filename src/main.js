@@ -1,13 +1,15 @@
 import '@styles/style.css'
 import {
     apiJokes1URL,
-    apiJokes1Headers,
     apiJokes2URL,
-    apiJokes2Headers,
+    weatherURLRaw,
+    allHeaders,
 } from '@config/apiConfig'
 import { fetchAData } from '@services/apiFetch'
 import printJoke from '@ui/printJoke'
+import printWeather from '@ui/printWeather'
 import { createEntry, saveEntry } from '@core/joke'
+import { getCoordinates } from '@core/weather'
 import { showJoke } from '@ui/selectors'
 
 // Es un listener… pero no esta manipulando el DOM per-se… esta desatando todo: consulta API, crea objeto, imprime en pantalla, tot
@@ -25,12 +27,19 @@ import { showJoke } from '@ui/selectors'
 //      var number scoreJoke
 //   Almacena objeto anterior usando funcion saveEntry (objeto es pasado como parametro)
 
-async function main() {
+async function initWeather() {
+    let [latitude, longitude] = await getCoordinates()
+    let weatherURL = `${weatherURLRaw}${latitude},${longitude}`
+    const dataWeather = await fetchAData(weatherURL, allHeaders)
+    printWeather(dataWeather)
+}
+
+async function initJoke() {
     let exchanger = true
 
     showJoke.addEventListener('click', async () => {
-        const dataJokes1 = await fetchAData(apiJokes1URL, apiJokes1Headers)
-        const dataJokes2 = await fetchAData(apiJokes2URL, apiJokes2Headers)
+        const dataJokes1 = await fetchAData(apiJokes1URL, allHeaders)
+        const dataJokes2 = await fetchAData(apiJokes2URL, allHeaders)
         let entry =
             exchanger === true
                 ? await createEntry(dataJokes1.joke)
@@ -42,6 +51,11 @@ async function main() {
         exchanger = exchanger === true ? false : true
         return exchanger
     })
+}
+
+async function main() {
+    await initWeather()
+    await initJoke()
 }
 
 main()
