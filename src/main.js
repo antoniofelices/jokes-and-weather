@@ -2,15 +2,15 @@ import '@styles/style.css'
 import {
     apiJokes1URL,
     apiJokes2URL,
-    weatherURLRaw,
+    apiwWeatherURLRaw,
     allHeaders,
-} from '@config/apiConfig'
+} from '@services/apiConfig'
 import { fetchAData } from '@services/apiFetch'
-import printJoke from '@ui/printJoke'
-import printWeather from '@ui/printWeather'
 import { createEntry, saveEntry } from '@core/joke'
 import { getCoordinates } from '@core/weather'
 import { showJoke } from '@ui/selectors'
+import printJoke from '@ui/printJoke'
+import printWeather from '@ui/printWeather'
 
 // Es un listener… pero no esta manipulando el DOM per-se… esta desatando todo: consulta API, crea objeto, imprime en pantalla, tot
 
@@ -29,7 +29,7 @@ import { showJoke } from '@ui/selectors'
 
 async function initWeather() {
     let [latitude, longitude] = await getCoordinates()
-    let weatherURL = `${weatherURLRaw}${latitude},${longitude}`
+    let weatherURL = `${apiwWeatherURLRaw}${latitude},${longitude}`
     const dataWeather = await fetchAData(weatherURL, allHeaders)
     printWeather(dataWeather)
 }
