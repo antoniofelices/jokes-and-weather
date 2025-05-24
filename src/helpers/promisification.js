@@ -4,4 +4,14 @@ function getCurrentPositionAsync(options) {
     })
 }
 
-export { getCurrentPositionAsync }
+function promisifyEvent(element, eventType, options = {}) {
+    return new Promise((resolve, reject) => {
+        const handler = (event) => {
+            resolve(event)
+        }
+
+        element.addEventListener(eventType, handler, options)
+    })
+}
+
+export { getCurrentPositionAsync, promisifyEvent }
