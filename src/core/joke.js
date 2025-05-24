@@ -1,22 +1,20 @@
-import reportJokes from '@data/reportJokes'
-
-async function createEntry(data) {
+async function createEntry(joke, score) {
     const entry = {
-        joke: `${data}`,
-        score: 0,
+        joke: `${joke}`,
+        score: score,
         date: new Date().toISOString(),
     }
     return entry
 }
 
-async function saveEntry(data) {
+async function saveEntry(entry, data) {
     try {
-        reportJokes.push(data)
+        data.push(entry)
     } catch (error) {
         const resultsLocal = []
         const messageNotConnect =
             'Cannot connect to the external database, saving data in local'
-        resultsLocal.push(data)
+        resultsLocal.push(entry)
         console.error(`${error.message}. ${messageNotConnect}`)
     }
 }
