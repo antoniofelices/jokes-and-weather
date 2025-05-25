@@ -1,4 +1,4 @@
-async function createEntry(joke, score) {
+async function createEntry(joke, score = 0) {
     const entry = {
         joke: `${joke}`,
         score: score,

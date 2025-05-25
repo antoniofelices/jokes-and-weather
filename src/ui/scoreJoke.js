@@ -6,7 +6,7 @@ rankingJoke.addEventListener('change', (event) => {
     event.preventDefault()
     let rateItInput = document.querySelector('input[name="rate-it"]:checked')
     valueRateItInput = rateItInput ? parseInt(rateItInput.value) : 0
-    rankingJoke.reset()
+    // rankingJoke.reset()
 })
 
 export { valueRateItInput }
