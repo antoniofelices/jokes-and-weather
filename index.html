@@ -23,38 +23,45 @@
             <div id="container-result" class="hide">
                 <div class="flex justify-center">
                     <span>Rate it</span>
-                    <form action="#" id="ranking-joke">
-                        <input
-                            class="hide"
-                            type="radio"
-                            name="rate-it"
-                            id="ranking-0"
-                            value="0"
-                            checked
-                        />
-                        <input
-                            type="radio"
-                            name="rate-it"
-                            id="ranking-1"
-                            value="1"
-                        />
-                        <input
-                            type="radio"
-                            name="rate-it"
-                            id="ranking-2"
-                            value="2"
-                        />
-                        <input
-                            type="radio"
-                            name="rate-it"
-                            id="ranking-3"
-                            value="3"
-                        />
-                    </form>
+                    <div id="ranking-joke">
+                        <label>
+                            <input
+                                type="radio"
+                                name="rate-it"
+                                id="ranking-0"
+                                value="0"
+                                checked
+                            />0
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="rate-it"
+                                id="ranking-1"
+                                value="1"
+                            />1
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="rate-it"
+                                id="ranking-2"
+                                value="2"
+                            />2
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="rate-it"
+                                id="ranking-3"
+                                value="3"
+                            />3
+                        </label>
+                    </div>
                 </div>
                 <p id="result-joke"></p>
             </div>
-            <button type="submit" id="show-joke">Make Me Laugh!</button>
+            <button type="button" id="show-joke">Make Me Laugh!</button>
         </main>
         <script type="module" src="/src/main.js"></script>
     </body>

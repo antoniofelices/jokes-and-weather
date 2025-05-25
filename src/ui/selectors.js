@@ -5,6 +5,8 @@ const containerResult = document.getElementById('container-result')
 const weatherlocation = document.getElementById('weather-location')
 const weatherTemperature = document.getElementById('weather-temperature')
 const mainTitle = document.getElementsByTagName('h1')[0]
+const checkedInput = document.querySelector('input[name="rate-it"]:checked')
+const defaultInput = document.querySelector('input[name="rate-it"][value="0"]')
 
 export {
     resultJoke,
@@ -14,4 +16,6 @@ export {
     weatherlocation,
     weatherTemperature,
     mainTitle,
+    checkedInput,
+    defaultInput,
 }

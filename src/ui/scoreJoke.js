@@ -1,12 +1,30 @@
-import { rankingJoke } from '@ui/selectors'
+import { rankingJoke, checkedInput, defaultInput } from '@ui/selectors'
+import { modifyEntry } from '@core/joke'
 
 let valueRateItInput = 0
 
-rankingJoke.addEventListener('change', (event) => {
-    event.preventDefault()
-    let rateItInput = document.querySelector('input[name="rate-it"]:checked')
-    valueRateItInput = rateItInput ? parseInt(rateItInput.value) : 0
-    // rankingJoke.reset()
-})
+function initRatingListener(currentEntry) {
+    rankingJoke.addEventListener('change', async () => {
+        let rateItInput = document.querySelector(
+            'input[name="rate-it"]:checked'
+        )
+        valueRateItInput = rateItInput ? parseInt(rateItInput.value) : 0
 
-export { valueRateItInput }
+        if (currentEntry) {
+            await modifyEntry(currentEntry, valueRateItInput)
+        }
+    })
+}
+
+async function resetRating() {
+    if (checkedInput) {
+        checkedInput.checked = false
+    }
+    if (defaultInput) {
+        defaultInput.checked = true
+    }
+
+    valueRateItInput = 0
+}
+
+export { initRatingListener, resetRating }
