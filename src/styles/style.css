@@ -122,8 +122,19 @@ header span {
     display: block;
 }
 
+label {
+    margin-right: var(--spacing-3);
+}
 .hide {
     display: none;
+}
+.dont-show {
+    position: absolute !important;
+    top: -9999rem;
+    left: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 
 .flex {
@@ -133,4 +144,9 @@ header span {
 
 .justify-center {
     justify-content: center;
+}
+
+#result-joke {
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-7);
 }
