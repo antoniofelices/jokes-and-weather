@@ -51,9 +51,7 @@
 }
 html,
 :host {
-    /* background: var(--color-gray) url(src/assets/images/start-shape.svg) repeat
-        center bottom; */
-    background-color: var(--color-gray);
+    background-color: var(--color-white);
     color: var(--color-raisin);
     line-height: var(--text-base--line-height);
     -webkit-text-size-adjust: 100%;
@@ -64,14 +62,6 @@ html,
     -webkit-tap-highlight-color: transparent;
 }
 
-a {
-    color: var(--color-blue);
-    text-decoration: inherit;
-}
-a:hover {
-    color: var(--color-blue);
-}
-
 body {
     margin: 0;
     display: flex;
@@ -80,7 +70,7 @@ body {
     min-height: 100vh;
 }
 
-h1,
+h2,
 p {
     font-size: var(--text-4xl);
     line-height: var(--text-xl--line-height);
@@ -122,12 +112,10 @@ header span {
     display: block;
 }
 
-label {
-    margin-right: var(--spacing-3);
-}
 .hide {
     display: none;
 }
+
 .dont-show {
     position: absolute !important;
     top: -9999rem;
@@ -144,6 +132,27 @@ label {
 
 .justify-center {
     justify-content: center;
+}
+
+.screen-reader-text {
+    border: 0;
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+    clip-path: none;
+    height: auto;
+    width: auto;
+    position: static;
+    display: block;
+    font-size: var(--text-base);
 }
 
 #result-joke {
