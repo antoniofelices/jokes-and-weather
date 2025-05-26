@@ -7,6 +7,7 @@ const weatherTemperature = document.getElementById('weather-temperature')
 const mainSubTitle = document.getElementsByTagName('h2')[0]
 const checkedInput = document.querySelector('input[name="rate-it"]:checked')
 const defaultInput = document.querySelector('input[name="rate-it"][value="0"]')
+const body = document.getElementById('body')
 
 export {
     resultJoke,
@@ -18,4 +19,5 @@ export {
     mainSubTitle,
     checkedInput,
     defaultInput,
+    body,
 }

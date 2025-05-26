@@ -14,6 +14,7 @@ import printWeather from '@ui/printWeather'
 import { initRatingListener, resetRating } from '@ui/scoreJoke'
 import reportJokes from '@data/reportJokes'
 import localStore from '@data/localStore'
+import changeImageBg from '@ui/changeImageBg'
 
 async function initWeather() {
     let [latitude, longitude] = await getCoordinates()
@@ -33,6 +34,7 @@ async function initJoke() {
                 ? await createEntry(dataJokes1.joke)
                 : await createEntry(dataJokes2.value)
 
+        changeImageBg()
         await printMainContent(localStore.currentEntry)
         await resetRating()
         initRatingListener()

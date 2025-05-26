@@ -51,7 +51,6 @@
 }
 html,
 :host {
-    background-color: var(--color-white);
     color: var(--color-raisin);
     line-height: var(--text-base--line-height);
     -webkit-text-size-adjust: 100%;
@@ -63,6 +62,10 @@ html,
 }
 
 body {
+    background-color: var(--color-white);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120vh;
     margin: 0;
     display: flex;
     place-items: center;
@@ -94,12 +97,12 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
 }
-button:hover {
+button:hover,
+button:active,
+button:focus {
     border-color: var(--color-blue);
-}
-button:focus,
-button:focus-visible {
-    outline: 4px auto var(--color-red);
+    background-color: var(--color-blue);
+    outline: none;
 }
 
 header {
@@ -158,4 +161,17 @@ header span {
 #result-joke {
     margin-top: var(--spacing-6);
     margin-bottom: var(--spacing-7);
+}
+
+svg {
+    fill: var(--color-blue);
+    stroke: var(--color-blue);
+    stroke-width: 0.7px;
+}
+
+svg:hover,
+svg:active,
+svg:focus {
+    fill: var(--color-red);
+    stroke: var(--color-red);
 }
