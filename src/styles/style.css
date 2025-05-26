@@ -4,8 +4,10 @@
 
     --color-white: #ffffff;
     --color-blue: #5266df;
-    --color-red: #fb5859;
-    --color-gray: #96979b;
+    --color-red: #ff6663;
+    --color-yellow: #e59500;
+    --color-raisin: #2d2327;
+    --color-gray: #fff3f0;
     --color-gray-200: #e6e7e8;
     --color-gray-300: #c8c9cb;
     --color-gray-500: #78797e;
@@ -49,6 +51,10 @@
 }
 html,
 :host {
+    /* background: var(--color-gray) url(src/assets/images/start-shape.svg) repeat
+        center bottom; */
+    background-color: var(--color-gray);
+    color: var(--color-raisin);
     line-height: var(--text-base--line-height);
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
