@@ -4,8 +4,10 @@
 
     --color-white: #ffffff;
     --color-blue: #5266df;
-    --color-red: #fb5859;
-    --color-gray: #96979b;
+    --color-red: #ff6663;
+    --color-yellow: #e59500;
+    --color-raisin: #2d2327;
+    --color-gray: #fff3f0;
     --color-gray-200: #e6e7e8;
     --color-gray-300: #c8c9cb;
     --color-gray-500: #78797e;
@@ -49,6 +51,7 @@
 }
 html,
 :host {
+    color: var(--color-raisin);
     line-height: var(--text-base--line-height);
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
@@ -58,15 +61,11 @@ html,
     -webkit-tap-highlight-color: transparent;
 }
 
-a {
-    color: var(--color-blue);
-    text-decoration: inherit;
-}
-a:hover {
-    color: var(--color-blue);
-}
-
 body {
+    background-color: var(--color-white);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120vh;
     margin: 0;
     display: flex;
     place-items: center;
@@ -74,7 +73,7 @@ body {
     min-height: 100vh;
 }
 
-h1,
+h2,
 p {
     font-size: var(--text-4xl);
     line-height: var(--text-xl--line-height);
@@ -98,12 +97,12 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
 }
-button:hover {
+button:hover,
+button:active,
+button:focus {
     border-color: var(--color-blue);
-}
-button:focus,
-button:focus-visible {
-    outline: 4px auto var(--color-red);
+    background-color: var(--color-blue);
+    outline: none;
 }
 
 header {
@@ -120,6 +119,15 @@ header span {
     display: none;
 }
 
+.dont-show {
+    position: absolute !important;
+    top: -9999rem;
+    left: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 .flex {
     display: flex;
     gap: var(--spacing-5);
@@ -127,4 +135,43 @@ header span {
 
 .justify-center {
     justify-content: center;
+}
+
+.screen-reader-text {
+    border: 0;
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+    clip-path: none;
+    height: auto;
+    width: auto;
+    position: static;
+    display: block;
+    font-size: var(--text-base);
+}
+
+#result-joke {
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-7);
+}
+
+svg {
+    fill: var(--color-blue);
+    stroke: var(--color-blue);
+    stroke-width: 0.7px;
+}
+
+svg:hover,
+svg:active,
+svg:focus {
+    fill: var(--color-red);
+    stroke: var(--color-red);
 }

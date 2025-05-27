@@ -1,7 +1,7 @@
-async function createEntry(joke, score) {
+async function createEntry(joke) {
     const entry = {
         joke: `${joke}`,
-        score: score,
+        score: 0,
         date: new Date().toISOString(),
     }
     return entry
@@ -10,6 +10,7 @@ async function createEntry(joke, score) {
 async function saveEntry(entry, data) {
     try {
         data.push(entry)
+        return data
     } catch (error) {
         const resultsLocal = []
         const messageNotConnect =
@@ -19,4 +20,9 @@ async function saveEntry(entry, data) {
     }
 }
 
-export { createEntry, saveEntry }
+async function modifyEntry(entry, newValueScore) {
+    entry.score = newValueScore
+    return entry
+}
+
+export { createEntry, saveEntry, modifyEntry }

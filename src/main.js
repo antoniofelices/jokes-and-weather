@@ -11,8 +11,10 @@ import { getCoordinates } from '@core/weather'
 import { showJoke } from '@ui/selectors'
 import printMainContent from '@ui/printMainContent'
 import printWeather from '@ui/printWeather'
-import { valueRateItInput } from '@ui/listeners/scoreJoke'
+import { initRatingListener, resetRating } from '@ui/scoreJoke'
 import reportJokes from '@data/reportJokes'
+import localStore from '@data/localStore'
+import changeImageBg from '@ui/changeImageBg'
 
 async function initWeather() {
     let [latitude, longitude] = await getCoordinates()
@@ -23,29 +25,29 @@ async function initWeather() {
 
 async function initJoke() {
     let exchanger = true
-    let counter = 0
     showJoke.addEventListener('click', async () => {
-        counter++
         const dataJokes1 = await fetchAData(apiJokes1URL, allHeaders)
         const dataJokes2 = await fetchAData(apiJokes2URL, allHeaders)
 
-        let entry =
+        localStore.currentEntry =
             exchanger === true
-                ? await createEntry(dataJokes1.joke, valueRateItInput)
-                : await createEntry(dataJokes2.value, valueRateItInput)
+                ? await createEntry(dataJokes1.joke)
+                : await createEntry(dataJokes2.value)
 
-        await printMainContent(entry)
+        changeImageBg()
+        await printMainContent(localStore.currentEntry)
+        await resetRating()
+        initRatingListener()
+        await saveEntry(localStore.currentEntry, reportJokes)
+
         exchanger = exchanger === true ? false : true
-
-        if (counter > 1) {
-            await saveEntry(entry, reportJokes)
-            console.log(reportJokes)
-        }
+        console.log(reportJokes)
     })
 }
 
 async function main() {
     await initWeather()
+    initRatingListener(localStore.currentEntry)
     await initJoke()
 }
 

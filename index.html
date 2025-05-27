@@ -11,7 +11,7 @@
             href="https://studiomoare.com/favicon.svg"
         />
     </head>
-    <body>
+    <body id="body">
         <header>
             <div>
                 <span id="weather-temperature"></span>
@@ -19,42 +19,81 @@
             </div>
         </header>
         <main>
-            <h1>Are you ready?</h1>
+            <h1 class="screen-reader-text">Jokes and Weather App</h1>
+            <h2>Are you ready?</h2>
             <div id="container-result" class="hide">
                 <div class="flex justify-center">
-                    <span>Rate it</span>
-                    <form action="#" id="ranking-joke">
-                        <input
-                            class="hide"
-                            type="radio"
-                            name="rate-it"
-                            id="ranking-0"
-                            value="0"
-                            checked
-                        />
-                        <input
-                            type="radio"
-                            name="rate-it"
-                            id="ranking-1"
-                            value="1"
-                        />
-                        <input
-                            type="radio"
-                            name="rate-it"
-                            id="ranking-2"
-                            value="2"
-                        />
-                        <input
-                            type="radio"
-                            name="rate-it"
-                            id="ranking-3"
-                            value="3"
-                        />
-                    </form>
+                    <span class="screen-reader-text">Rate it</span>
+                    <div id="ranking-joke" class="">
+                        <label aria-label="No Ranting">
+                            <input
+                                class="dont-show"
+                                type="radio"
+                                name="rate-it"
+                                id="ranking-0"
+                                value="0"
+                                checked
+                            />
+                        </label>
+                        <label aria-label="Bad Ranting">
+                            <input
+                                class="dont-show"
+                                type="radio"
+                                name="rate-it"
+                                id="ranking-1"
+                                value="1"
+                            /><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 32 32"
+                            >
+                                <path
+                                    d="M16.5 29v0c-6.904 0-12.5-5.596-12.5-12.5s5.596-12.5 12.5-12.5c6.904 0 12.5 5.596 12.5 12.5s-5.596 12.5-12.5 12.5zM16.5 28c6.351 0 11.5-5.149 11.5-11.5s-5.149-11.5-11.5-11.5c-6.351 0-11.5 5.149-11.5 11.5s5.149 11.5 11.5 11.5v0zM10 12v1h4v-1h-4zM19 12v1h4v-1h-4zM16.481 21c-3.481 0-5.481 2-5.481 2v-1c0 0 2-2 5.481-2s5.519 2 5.519 2v1c0 0-2.037-2-5.519-2v0z"
+                                ></path>
+                            </svg>
+                        </label>
+                        <label aria-label="Neutral Ranting">
+                            <input
+                                class="dont-show"
+                                type="radio"
+                                name="rate-it"
+                                id="ranking-2"
+                                value="2"
+                            /><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 32 32"
+                            >
+                                <path
+                                    d="M16.5 29v0c-6.904 0-12.5-5.596-12.5-12.5s5.596-12.5 12.5-12.5c6.904 0 12.5 5.596 12.5 12.5s-5.596 12.5-12.5 12.5zM16.5 28c6.351 0 11.5-5.149 11.5-11.5s-5.149-11.5-11.5-11.5c-6.351 0-11.5 5.149-11.5 11.5s5.149 11.5 11.5 11.5v0zM12 14c0.552 0 1-0.448 1-1s-0.448-1-1-1c-0.552 0-1 0.448-1 1s0.448 1 1 1v0zM21 14c0.552 0 1-0.448 1-1s-0.448-1-1-1c-0.552 0-1 0.448-1 1s0.448 1 1 1v0zM12 21v1h9v-1h-9z"
+                                ></path>
+                            </svg>
+                        </label>
+                        <label aria-label="Good Ranting">
+                            <input
+                                class="dont-show"
+                                type="radio"
+                                name="rate-it"
+                                id="ranking-3"
+                                value="3"
+                            /><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 32 32"
+                            >
+                                <path
+                                    d="M16.5 29v0c-6.904 0-12.5-5.596-12.5-12.5s5.596-12.5 12.5-12.5c6.904 0 12.5 5.596 12.5 12.5s-5.596 12.5-12.5 12.5zM16.5 28c6.351 0 11.5-5.149 11.5-11.5s-5.149-11.5-11.5-11.5c-6.351 0-11.5 5.149-11.5 11.5s5.149 11.5 11.5 11.5v0zM18.672 13.793l2.828-2.828 2.828 2.828-0.707 0.707-2.121-2.121-2.121 2.121-0.707-0.707zM8.672 13.793l2.828-2.828 2.828 2.828-0.707 0.707-2.121-2.121-2.121 2.121-0.707-0.707zM9 19h15c0 0-1 6-7.5 6s-7.5-6-7.5-6zM10.345 20c0 0 1.287 4.013 6.18 4.013s6.118-4.013 6.118-4.013h-12.298z"
+                                ></path>
+                            </svg>
+                        </label>
+                    </div>
                 </div>
                 <p id="result-joke"></p>
             </div>
-            <button type="submit" id="show-joke">Make Me Laugh!</button>
+            <button type="button" id="show-joke">Make Me Laugh!</button>
         </main>
         <script type="module" src="/src/main.js"></script>
     </body>
