@@ -1,8 +1,4 @@
-interface Joke {
-    joke: string
-    score: number
-    date: Date
-}
+import type { Joke } from '@/helpers/interfaces'
 
 const reportJokes: Joke[] = []
 

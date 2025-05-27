@@ -1,18 +1,7 @@
-function getCurrentPositionAsync(options) {
+function getCurrentPositionAsync(options?: any): Promise<any> {
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options)
     })
 }
 
-/*TODO: Understand when to promise a listener. */
-function promisifyEvent(element, eventType, options = {}) {
-    return new Promise((resolve) => {
-        const handler = (event) => {
-            resolve(event)
-        }
-
-        element.addEventListener(eventType, handler, options)
-    })
-}
-
-export { getCurrentPositionAsync, promisifyEvent }
+export { getCurrentPositionAsync }
