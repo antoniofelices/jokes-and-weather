@@ -1,4 +1,7 @@
-export async function fetchAData(apiURL, apiHeaders) {
+export async function fetchAData(
+    apiURL: string,
+    apiHeaders: { method: string; headers: any }
+) {
     try {
         const response = await fetch(apiURL, apiHeaders)
         const textResponseFail = `Fail when fetch data. URL or Headers HTTP status:`
