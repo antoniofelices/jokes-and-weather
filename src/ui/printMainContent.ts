@@ -3,7 +3,7 @@ import {
     containerResult,
     mainSubTitle,
     showJoke,
-} from '@ui/selectors'
+} from '@/ui/selectors'
 
 async function printJoke(data) {
     const buttonNewContent = 'Give me more, please'

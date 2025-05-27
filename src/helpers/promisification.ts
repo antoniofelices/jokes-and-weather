@@ -6,7 +6,7 @@ function getCurrentPositionAsync(options) {
 
 /*TODO: Understand when to promise a listener. */
 function promisifyEvent(element, eventType, options = {}) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         const handler = (event) => {
             resolve(event)
         }

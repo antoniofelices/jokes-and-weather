@@ -1,4 +1,4 @@
-import { weatherlocation, weatherTemperature } from '@ui/selectors'
+import { weatherlocation, weatherTemperature } from '@/ui/selectors'
 
 async function printWeather(data) {
     const unitTemperature = '°C'

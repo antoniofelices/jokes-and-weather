@@ -1,9 +1,9 @@
-import { rankingJoke, checkedInput, defaultInput } from '@ui/selectors'
+import { rankingJoke, checkedInput, defaultInput } from '@/ui/selectors'
 import { modifyEntry } from '@core/joke'
-import localStore from '@data/localStore'
+import localStore from '@/data/localStore'
 
 function initRatingListener() {
-    rankingJoke.addEventListener('change', async () => {
+    rankingJoke?.addEventListener('change', async () => {
         let rateItInput = document.querySelector(
             'input[name="rate-it"]:checked'
         )

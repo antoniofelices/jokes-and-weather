@@ -1,4 +1,4 @@
-import { getCurrentPositionAsync } from '@helpers/promisification'
+import { getCurrentPositionAsync } from '@/helpers/promisification'
 
 async function getCoordinates() {
     const defaultLocation = {
@@ -8,7 +8,7 @@ async function getCoordinates() {
     }
 
     try {
-        const position = await getCurrentPositionAsync()
+        const position = await getCurrentPositionAsync({})
         return [position.coords.latitude, position.coords.longitude]
     } catch (error) {
         return [defaultLocation.latitude, defaultLocation.longitude]

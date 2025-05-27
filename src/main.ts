@@ -4,17 +4,17 @@ import {
     apiJokes2URL,
     apiwWeatherURLRaw,
     allHeaders,
-} from '@services/apiConfig'
-import { fetchAData } from '@services/apiFetch'
-import { createEntry, saveEntry } from '@core/joke'
-import { getCoordinates } from '@core/weather'
-import { showJoke } from '@ui/selectors'
-import printMainContent from '@ui/printMainContent'
-import printWeather from '@ui/printWeather'
-import { initRatingListener, resetRating } from '@ui/scoreJoke'
-import reportJokes from '@data/reportJokes'
-import localStore from '@data/localStore'
-import changeImageBg from '@ui/changeImageBg'
+} from '@/services/apiConfig'
+import { fetchAData } from '@/services/apiFetch'
+import { createEntry, saveEntry } from '@/core/joke'
+import { getCoordinates } from '@/core/weather'
+import { showJoke } from '@/ui/selectors'
+import printMainContent from '@/ui/printMainContent'
+import printWeather from '@/ui/printWeather'
+import { initRatingListener, resetRating } from '@/ui/scoreJoke'
+import reportJokes from '@/data/reportJokes'
+import localStore from '@/data/localStore'
+import changeImageBg from '@/ui/changeImageBg'
 
 async function initWeather() {
     let [latitude, longitude] = await getCoordinates()
@@ -25,7 +25,7 @@ async function initWeather() {
 
 async function initJoke() {
     let exchanger = true
-    showJoke.addEventListener('click', async () => {
+    showJoke?.addEventListener('click', async () => {
         const dataJokes1 = await fetchAData(apiJokes1URL, allHeaders)
         const dataJokes2 = await fetchAData(apiJokes2URL, allHeaders)
 
@@ -47,7 +47,7 @@ async function initJoke() {
 
 async function main() {
     await initWeather()
-    initRatingListener(localStore.currentEntry)
+    initRatingListener()
     await initJoke()
 }
 
