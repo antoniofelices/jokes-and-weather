@@ -17,10 +17,15 @@ import localStore from '@/data/localStore'
 import changeImageBg from '@/ui/changeImageBg'
 
 async function initWeather() {
-    let [latitude, longitude] = await getCoordinates()
-    let weatherURL = `${apiwWeatherURLRaw}${latitude},${longitude}`
-    const dataWeather = await fetchAData(weatherURL, allHeaders)
-    printWeather(dataWeather)
+    try {
+        let [latitude, longitude] = await getCoordinates()
+        let weatherURL = `${apiwWeatherURLRaw}${latitude},${longitude}`
+        const dataWeather = await fetchAData(weatherURL, allHeaders)
+        printWeather(dataWeather)
+    } catch (error) {
+        const textConsoleError = `Cannot fetch data. Error:`
+        console.error(textConsoleError, error)
+    }
 }
 
 async function initJoke() {
