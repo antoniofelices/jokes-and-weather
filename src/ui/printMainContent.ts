@@ -5,15 +5,12 @@ import {
     showJoke,
 } from '@/ui/selectors'
 
-import type { Joke } from '@/helpers/interfaces'
-
-async function printJoke(data: Joke) {
+async function printMainContent(data: string) {
     const buttonNewContent = 'Give me more, please'
-
     containerResult.classList.remove('hide')
     mainSubTitle.classList.add('hide')
     showJoke.textContent = buttonNewContent
-    resultJoke.textContent = data.joke
+    resultJoke.textContent = data
 }
 
-export default printJoke
+export default printMainContent

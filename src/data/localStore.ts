@@ -1,5 +1,9 @@
 let localStore = {
-    currentEntry: {},
+    currentEntry: {
+        joke: '',
+        score: 0,
+        date: '',
+    },
     valueRateItInput: 0,
 }
 
