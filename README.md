@@ -2,13 +2,14 @@
 
 ## Description
 
-<!-- ![Preview](src/assets/images/typescript.svg 'Coverage Preview') -->
+Exercise to practise consuming API data. Tree APIs: two from Jokes and one weather API. Manipulate the DOM, learn TypeScript and understand how it works with Vite and TypeScript.
+
+![Preview](src/assets/images/preview-01.webp 'Jokes and Weather Preview')
 
 ### Some decisions
 
 -   Use Vite and Vitest as development tools.
--   Refactor the folder structure of the base project. Move movies to its own module. Move test to directory test.
--   Add modules path and coverage.
+-   First, focus on writing code in JavaScript, then follow up by refactoring it in TypeScript.
 
 ## Technologies
 
@@ -29,19 +30,41 @@
 1. Clone this repo
 
 ```bash
-$ git clone https://github.com/antoniofelices/filtering-sorting-movies .
+$ git clone https://github.com/antoniofelices/jokes-and-weather .
 ```
 
-2. Display branchs
+2. Install packages
 
 ```bash
-$ git branch --all
+$ npm install
 ```
 
-3. Checkout branch vitest
+3. Run develop
 
 ```bash
-$ git checkout vitest
+$ npm run dev
+```
+
+#### Installation JavaScript
+
+To see the project just in JavaScript (if You have run dev, stop it).
+
+1. Fetch tags
+
+```bash
+$ git fetch --all --tag
+```
+
+2. Display tags
+
+```bash
+$ git tag
+```
+
+3. Checkout tag
+
+```bash
+$ git checkout tags/v0.1
 ```
 
 4. Install packages
@@ -50,17 +73,16 @@ $ git checkout vitest
 $ npm install
 ```
 
-5. Run tests
+5. Run develop
 
 ```bash
-$ npm test:watch
+$ npm run dev
 ```
 
-6. Run coverage
+## Future Improvements
 
-```bash
-$ npm coverage
-```
+-   Save local data on `localStore` and `sessionStore`
+-   Improve the styles and background image transitions.
 
 ## Contributing
 

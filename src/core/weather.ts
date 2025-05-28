@@ -1,7 +1,8 @@
-import { getCurrentPositionAsync } from '@helpers/promisification'
+import { getCurrentPositionAsync } from '@/helpers/promisification'
+import type { Location } from '@/helpers/interfaces'
 
 async function getCoordinates() {
-    const defaultLocation = {
+    const defaultLocation: Location = {
         latitude: 41.3851,
         longitude: 2.1734,
         city: 'Barcelona',
