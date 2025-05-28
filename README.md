@@ -30,19 +30,42 @@ Exercise to practise consuming API data. Tree APIs: two from Jokes and one weath
 1. Clone this repo
 
 ```bash
-$ git clone https://github.com/antoniofelices/filtering-sorting-movies .
+$ git clone https://github.com/antoniofelices/jokes-and-weather .
 ```
 
-2. Display branchs
+2. Install packages
 
 ```bash
-$ git branch --all
+$ npm install
 ```
 
-3. Checkout branch main
+3. Run develop
 
 ```bash
-$ git checkout main
+$ npm run dev
+```
+
+#### Installation JavaScript
+
+To see the project just in JavaScript.
+If You have run dev, stop it. Then:
+
+1. Fetch tags
+
+```bash
+$ git fetch --all --tag
+```
+
+2. Display tags
+
+```bash
+$ git tag
+```
+
+3. Checkout tag
+
+```bash
+$ git checkout tags/v0.1
 ```
 
 4. Install packages
@@ -52,18 +75,6 @@ $ npm install
 ```
 
 5. Run develop
-
-```bash
-$ npm run dev
-```
-
-6. In vanilla JavaScript
-
-```bash
-$ git checkout javascript
-```
-
-7. Run develop
 
 ```bash
 $ npm run dev
