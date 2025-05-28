@@ -47,8 +47,7 @@ $ npm run dev
 
 #### Installation JavaScript
 
-To see the project just in JavaScript.
-If You have run dev, stop it. Then:
+To see the project just in JavaScript (if You have run dev, stop it).
 
 1. Fetch tags
 

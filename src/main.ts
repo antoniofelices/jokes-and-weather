@@ -15,6 +15,7 @@ import { initRatingListener, resetRating } from '@/ui/scoreJoke'
 import reportJokes from '@/data/reportJokes'
 import localStore from '@/data/localStore'
 import changeImageBg from '@/ui/changeImageBg'
+import type { Joke } from '@/helpers/interfaces'
 
 async function initWeather() {
     let [latitude, longitude] = await getCoordinates()
@@ -34,11 +35,13 @@ async function initJoke() {
                 ? await createEntry(dataJokes1.joke)
                 : await createEntry(dataJokes2.value)
 
+        let entry: Joke = localStorage.currentEntry
+
         changeImageBg()
-        await printMainContent(localStore.currentEntry)
+        await printMainContent(entry)
         await resetRating()
         initRatingListener()
-        await saveEntry(localStore.currentEntry, reportJokes)
+        await saveEntry(entry, reportJokes)
 
         exchanger = exchanger === true ? false : true
         console.log(reportJokes)

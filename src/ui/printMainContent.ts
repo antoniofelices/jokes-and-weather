@@ -5,7 +5,9 @@ import {
     showJoke,
 } from '@/ui/selectors'
 
-async function printJoke(data) {
+import type { Joke } from '@/helpers/interfaces'
+
+async function printJoke(data: Joke) {
     const buttonNewContent = 'Give me more, please'
 
     containerResult.classList.remove('hide')

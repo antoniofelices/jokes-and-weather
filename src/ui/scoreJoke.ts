@@ -6,16 +6,14 @@ function initRatingListener() {
     rankingJoke?.addEventListener('change', async () => {
         let rateItInput = document.querySelector(
             'input[name="rate-it"]:checked'
-        )
-        localStore.valueRateItInput = rateItInput
-            ? parseInt(rateItInput.value)
-            : 0
+        ) as HTMLInputElement
+        let entry: any = localStore.currentEntry
+        let score: number = localStore.valueRateItInput
 
-        if (localStore.currentEntry) {
-            await modifyEntry(
-                localStore.currentEntry,
-                localStore.valueRateItInput
-            )
+        score = rateItInput ? parseInt(rateItInput.value) : 0
+
+        if (entry) {
+            await modifyEntry(entry, score)
         }
     })
 }
