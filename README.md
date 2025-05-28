@@ -2,13 +2,14 @@
 
 ## Description
 
-<!-- ![Preview](src/assets/images/typescript.svg 'Coverage Preview') -->
+Exercise to practise consuming API data. Tree APIs: two from Jokes and one weather API. Manipulate the DOM, learn TypeScript and understand how it works with Vite and TypeScript.
+
+![Preview](src/assets/images/preview-01.webp 'Jokes and Weather Preview')
 
 ### Some decisions
 
 -   Use Vite and Vitest as development tools.
--   Refactor the folder structure of the base project. Move movies to its own module. Move test to directory test.
--   Add modules path and coverage.
+-   First, focus on writing code in JavaScript, then follow up by refactoring it in TypeScript.
 
 ## Technologies
 
@@ -38,10 +39,10 @@ $ git clone https://github.com/antoniofelices/filtering-sorting-movies .
 $ git branch --all
 ```
 
-3. Checkout branch vitest
+3. Checkout branch main
 
 ```bash
-$ git checkout vitest
+$ git checkout main
 ```
 
 4. Install packages
@@ -50,17 +51,28 @@ $ git checkout vitest
 $ npm install
 ```
 
-5. Run tests
+5. Run develop
 
 ```bash
-$ npm test:watch
+$ npm run dev
 ```
 
-6. Run coverage
+6. In vanilla JavaScript
 
 ```bash
-$ npm coverage
+$ git checkout javascript
 ```
+
+7. Run develop
+
+```bash
+$ npm run dev
+```
+
+## Future Improvements
+
+-   Save local data on `localStore` and `sessionStore`
+-   Improve the styles and background image transitions.
 
 ## Contributing
 
