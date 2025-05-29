@@ -1,11 +1,12 @@
 import { getCurrentPositionAsync } from '@/helpers/promisification'
 import type { Location } from '@/helpers/interfaces'
+import resultConfig from '@/helpers/resultConfig'
 
 async function getCoordinates() {
     const defaultLocation: Location = {
-        latitude: 41.3851,
-        longitude: 2.1734,
-        city: 'Barcelona',
+        latitude: resultConfig.defaultLatitudeWeather,
+        longitude: resultConfig.defaultLongitudeWeather,
+        city: resultConfig.defaultCityWeather,
     }
 
     try {

@@ -15,6 +15,7 @@ import { initRatingListener, resetRating } from '@/ui/scoreJoke'
 import reportJokes from '@/data/reportJokes'
 import localStore from '@/data/localStore'
 import changeImageBg from '@/ui/changeImageBg'
+import resultConfig from '@/helpers/resultConfig'
 
 async function initWeather() {
     try {
@@ -23,8 +24,7 @@ async function initWeather() {
         const dataWeather = await fetchAData(weatherURL, allHeaders)
         printWeather(dataWeather)
     } catch (error) {
-        const textConsoleError = `Cannot fetch data. Error:`
-        console.error(textConsoleError, error)
+        console.error(resultConfig.textResponseFailApiKeyWeather, error)
     }
 }
 

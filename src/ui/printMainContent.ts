@@ -4,12 +4,12 @@ import {
     mainSubTitle,
     showJoke,
 } from '@/ui/selectors'
+import resultConfig from '@/helpers/resultConfig'
 
 async function printMainContent(data: string) {
-    const buttonNewContent = 'Give me more, please'
     containerResult.classList.remove('hide')
     mainSubTitle.classList.add('hide')
-    showJoke.textContent = buttonNewContent
+    showJoke.textContent = resultConfig.buttonPrintMainContent
     resultJoke.textContent = data
 }
 

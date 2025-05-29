@@ -1,4 +1,5 @@
 import type { Joke } from '@/helpers/interfaces'
+import resultConfig from '@/helpers/resultConfig'
 
 async function createEntry(joke: Joke) {
     const entry: Joke = {
@@ -15,10 +16,8 @@ async function saveEntry(entry: Joke, data: Joke[]) {
         return data
     } catch (error) {
         const resultsLocal = []
-        const messageNotConnect =
-            'Cannot connect to the external database, saving data in local'
         resultsLocal.push(entry)
-        console.error(`${messageNotConnect}`)
+        console.error(`${resultConfig.messageNotConnectSaveEntry}`)
         // console.error(`${error.message}. ${messageNotConnect}`)
     }
 }
