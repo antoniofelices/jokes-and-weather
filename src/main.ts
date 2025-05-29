@@ -34,6 +34,9 @@ async function initJoke() {
         const dataJokes1 = await fetchAData(apiJokes1URL, allHeaders)
         const dataJokes2 = await fetchAData(apiJokes2URL, allHeaders)
 
+        if (dataJokes1.length === 0 || dataJokes2.length === 0)
+            return resultConfig.textResponseErrorApiFetch
+
         localStore.currentEntry =
             exchanger === true
                 ? await createEntry(dataJokes1.joke)
