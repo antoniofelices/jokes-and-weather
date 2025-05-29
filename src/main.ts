@@ -15,6 +15,7 @@ import { initRatingListener, resetRating } from '@/ui/scoreJoke'
 import reportJokes from '@/data/reportJokes'
 import localStore from '@/data/localStore'
 import changeImageBg from '@/ui/changeImageBg'
+import resultConfig from '@/helpers/resultConfig'
 
 async function initWeather() {
     try {
@@ -23,8 +24,7 @@ async function initWeather() {
         const dataWeather = await fetchAData(weatherURL, allHeaders)
         printWeather(dataWeather)
     } catch (error) {
-        const textConsoleError = `Cannot fetch data. Error:`
-        console.error(textConsoleError, error)
+        console.error(resultConfig.textResponseFailApiKeyWeather, error)
     }
 }
 
@@ -33,6 +33,9 @@ async function initJoke() {
     showJoke?.addEventListener('click', async () => {
         const dataJokes1 = await fetchAData(apiJokes1URL, allHeaders)
         const dataJokes2 = await fetchAData(apiJokes2URL, allHeaders)
+
+        if (dataJokes1.length === 0 || dataJokes2.length === 0)
+            return resultConfig.textResponseErrorApiFetch
 
         localStore.currentEntry =
             exchanger === true

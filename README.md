@@ -11,6 +11,10 @@ Exercise to practise consuming API data. Tree APIs: two from Jokes and one weath
 -   Use Vite and Vitest as development tools.
 -   First, focus on writing code in JavaScript, then follow up by refactoring it in TypeScript.
 
+### API key from
+
+To see the weather forecast, you need an API key from [Weather API](https://www.weatherapi.com/)
+
 ## Technologies
 
 -   JavaScript.

@@ -1,12 +1,19 @@
 import type { Joke } from '@/helpers/interfaces'
+import resultConfig from '@/helpers/resultConfig'
+import localStore from '@/data/localStore'
 
-async function createEntry(joke: Joke) {
-    const entry: Joke = {
-        joke: `${joke}`,
-        score: 0,
-        date: `${new Date().toISOString()}`,
+async function createEntry(joke: string) {
+    try {
+        const entry: Joke = {
+            joke: `${joke}`,
+            score: 0,
+            date: `${new Date().toISOString()}`,
+        }
+        return entry
+    } catch (error) {
+        console.error(error)
+        return localStore.currentEntry
     }
-    return entry
 }
 
 async function saveEntry(entry: Joke, data: Joke[]) {
@@ -15,15 +22,14 @@ async function saveEntry(entry: Joke, data: Joke[]) {
         return data
     } catch (error) {
         const resultsLocal = []
-        const messageNotConnect =
-            'Cannot connect to the external database, saving data in local'
         resultsLocal.push(entry)
-        console.error(`${messageNotConnect}`)
-        // console.error(`${error.message}. ${messageNotConnect}`)
+        console.error(`${resultConfig.messageNotConnectSaveEntry}`)
+        return resultsLocal
     }
 }
 
 async function modifyEntry(entry: Joke, newValueScore: number) {
+    if (!entry || !newValueScore) return
     entry.score = newValueScore
     return entry
 }

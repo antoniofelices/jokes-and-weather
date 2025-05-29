@@ -1,8 +1,8 @@
 import { weatherlocation, weatherTemperature } from '@/ui/selectors'
+import resultConfig from '@/helpers/resultConfig'
 
 async function printWeather(data: any) {
-    const unitTemperature = '°C'
-    weatherTemperature.textContent = `${data.current.temp_c} ${unitTemperature}`
+    weatherTemperature.textContent = `${data.current.temp_c} ${resultConfig.unitTemperaturePrintWeather}`
     weatherlocation.textContent = data.location.name
 }
 
