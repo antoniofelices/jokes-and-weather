@@ -6,7 +6,6 @@ async function getCoordinates() {
     const defaultLocation: Location = {
         latitude: resultConfig.defaultLatitudeWeather,
         longitude: resultConfig.defaultLongitudeWeather,
-        city: resultConfig.defaultCityWeather,
     }
 
     try {

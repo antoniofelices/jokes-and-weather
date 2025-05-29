@@ -1,7 +1,6 @@
 export type Location = {
     latitude: number
     longitude: number
-    city: string
 }
 
 export type Joke = {

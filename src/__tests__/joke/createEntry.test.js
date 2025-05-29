@@ -2,11 +2,11 @@ import { describe, it, expect } from 'vitest'
 import { createEntry } from '@core/joke'
 
 describe('Function "createEntry"', () => {
-    it('should be declared', async () => {
+    it('Should be declared', async () => {
         expect(typeof createEntry).toBe('function')
     })
 
-    it('should return an object', async () => {
+    it('Should return an object', async () => {
         expect((await createEntry()) instanceof Object).toBe(true)
     })
 
