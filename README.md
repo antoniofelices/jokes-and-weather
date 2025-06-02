@@ -4,7 +4,7 @@
 
 Exercise to practise consuming API data. Tree APIs: two from Jokes and one weather API. Manipulate the DOM, learn TypeScript and understand how it works with Vite and TypeScript.
 
-![Preview](src/assets/images/preview-01.webp 'Jokes and Weather Preview')
+<img src="src/assets/images/preview-01.webp" alt="Preview" width="200"/>
 
 ### Some decisions
 
@@ -85,6 +85,7 @@ $ npm run dev
 
 ## Future Improvements
 
+-   Move the errors to a separate log file.
 -   Save local data on `localStore` and `sessionStore`
 -   Improve the styles and background image transitions.
 

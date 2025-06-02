@@ -1,20 +1,13 @@
-import resultConfig from '@/helpers/resultConfig'
+import { ConnectionError } from '@/helpers/errorsHandlers'
 
-export async function fetchAData(
+export async function fetchApiData(
     apiURL: string,
-    apiHeaders: { method: string; headers: any }
+    requestConfig: { method: string; headers: any }
 ) {
-    try {
-        const response = await fetch(apiURL, apiHeaders)
-        if (!response.ok) {
-            throw new Error(
-                `${resultConfig.textResponseFailApiFetch} ${response.status}`
-            )
-        }
-        const data = await response.json()
-        return data
-    } catch (error) {
-        console.error(resultConfig.textResponseErrorApiFetch, error)
-        return []
+    const response = await fetch(apiURL, requestConfig)
+    if (!response.ok) {
+        throw new ConnectionError(`${response.status}`)
     }
+    const data = await response.json()
+    return data
 }

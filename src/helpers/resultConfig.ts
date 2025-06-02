@@ -1,12 +1,14 @@
 let resultConfig = {
-    messageNotConnectSaveEntry:
+    messageSaveEntryLocalStore:
         'Cannot connect to the external database, saving data in local',
-    textResponseFailApiFetch:
-        'Fail when fetch data. URL or Headers HTTP status:',
-    textResponseErrorApiFetch: 'Cannot fetch data.',
+    messageFailApiKeyApiWeather: 'You don`t have an API key.',
+    messageNotValidateDataApiJokes1:
+        'Not a valid data set from the API Jokes 1',
+    messageNotValidateDataApiJokes2:
+        'Not a valid data set from the API Jokes 2',
+
     buttonPrintMainContent: 'Give me more, please',
     unitTemperaturePrintWeather: '°C',
-    textResponseFailApiKeyWeather: 'You don`t have an API key.',
     defaultLatitudeWeather: 41.3851,
     defaultLongitudeWeather: 2.1734,
     defaultCityWeather: 'Barcelona',

@@ -23,7 +23,7 @@ async function saveEntry(entry: Joke, data: Joke[]) {
     } catch (error) {
         const resultsLocal = []
         resultsLocal.push(entry)
-        console.error(`${resultConfig.messageNotConnectSaveEntry}`)
+        console.error(`${resultConfig.messageSaveEntryLocalStore}`)
         return resultsLocal
     }
 }
