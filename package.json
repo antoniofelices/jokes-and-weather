@@ -1,7 +1,7 @@
 {
     "name": "sprint-4-it-academy-api-jokes-weather",
     "private": true,
-    "version": "0.0.1",
+    "version": "0.0.2",
     "type": "module",
     "scripts": {
         "dev": "vite",
