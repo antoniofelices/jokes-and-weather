@@ -7,13 +7,9 @@ async function getCoordinates() {
         latitude: resultConfig.defaultLatitudeWeather,
         longitude: resultConfig.defaultLongitudeWeather,
     }
-
-    try {
-        const position = await getCurrentPositionAsync()
-        return [position.coords.latitude, position.coords.longitude]
-    } catch (error) {
-        return [defaultLocation.latitude, defaultLocation.longitude]
-    }
+    const position = await getCurrentPositionAsync()
+    if (!position) return [defaultLocation.latitude, defaultLocation.longitude]
+    return [position.coords.latitude, position.coords.longitude]
 }
 
 export { getCoordinates }

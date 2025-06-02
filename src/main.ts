@@ -2,10 +2,11 @@ import '@styles/style.css'
 import {
     apiJokes1URL,
     apiJokes2URL,
-    apiwWeatherURLRaw,
-    allHeaders,
+    apiKeyWeather,
+    requestConfig,
+    apiWeatherURLRaw,
 } from '@/services/apiConfig'
-import { fetchAData } from '@/services/apiFetch'
+import { fetchApiData } from '@/services/apiFetch'
 import { createEntry, saveEntry } from '@/core/joke'
 import { getCoordinates } from '@/core/weather'
 import { showJoke } from '@/ui/selectors'
@@ -16,40 +17,69 @@ import reportJokes from '@/data/reportJokes'
 import localStore from '@/data/localStore'
 import changeImageBg from '@/ui/changeImageBg'
 import resultConfig from '@/helpers/resultConfig'
+import { ConnectionError, ValidationError } from '@/helpers/errorsHandlers'
 
 async function initWeather() {
     try {
+        if (!apiKeyWeather) {
+            throw new ConnectionError(resultConfig.messageFailApiKeyApiWeather)
+        }
         let [latitude, longitude] = await getCoordinates()
-        let weatherURL = `${apiwWeatherURLRaw}${latitude},${longitude}`
-        const dataWeather = await fetchAData(weatherURL, allHeaders)
-        printWeather(dataWeather)
+        let weatherURL = `${apiWeatherURLRaw}${latitude},${longitude}`
+        const weatherData = await fetchApiData(weatherURL, requestConfig)
+        printWeather(weatherData)
     } catch (error) {
-        console.error(resultConfig.textResponseFailApiKeyWeather, error)
+        if (error instanceof ConnectionError) {
+            console.error(error.message)
+        } else {
+            console.error(error)
+        }
+        return null
     }
 }
 
 async function initJoke() {
     let exchanger = true
     showJoke?.addEventListener('click', async () => {
-        const dataJokes1 = await fetchAData(apiJokes1URL, allHeaders)
-        const dataJokes2 = await fetchAData(apiJokes2URL, allHeaders)
+        try {
+            const dataJokes1 = await fetchApiData(apiJokes1URL, requestConfig)
+            const dataJokes2 = await fetchApiData(apiJokes2URL, requestConfig)
 
-        if (dataJokes1.length === 0 || dataJokes2.length === 0)
-            return resultConfig.textResponseErrorApiFetch
+            if (!dataJokes1.joke) {
+                throw new ValidationError(
+                    resultConfig.messageNotValidateDataApiJokes1
+                )
+            }
 
-        localStore.currentEntry =
-            exchanger === true
-                ? await createEntry(dataJokes1.joke)
-                : await createEntry(dataJokes2.value)
+            if (!dataJokes2.value) {
+                throw new ValidationError(
+                    resultConfig.messageNotValidateDataApiJokes2
+                )
+            }
+            localStore.currentEntry =
+                exchanger === true
+                    ? await createEntry(dataJokes1.joke)
+                    : await createEntry(dataJokes2.value)
 
-        changeImageBg()
-        await printMainContent(localStore.currentEntry.joke)
-        await resetRating()
-        initRatingListener()
-        await saveEntry(localStore.currentEntry, reportJokes)
+            changeImageBg()
+            await printMainContent(localStore.currentEntry.joke)
+            await resetRating()
+            initRatingListener()
+            await saveEntry(localStore.currentEntry, reportJokes)
 
-        exchanger = exchanger === true ? false : true
-        console.log(reportJokes)
+            exchanger = exchanger === true ? false : true
+            console.log(reportJokes)
+        } catch (error) {
+            if (error instanceof ConnectionError) {
+                console.error(error.message)
+            } else if (error instanceof ValidationError) {
+                console.error(error.message)
+            } else {
+                console.error(error)
+            }
+
+            return null
+        }
     })
 }
 
