@@ -1,7 +1,8 @@
 let resultConfig = {
     messageSaveEntryLocalStore:
         'Cannot connect to the external database, saving data in local',
-    messageFailApiKeyApiWeather: 'You don`t have an API key.',
+    messageFailApiKeyApiWeather:
+        'You don`t have an API key for the Weather API app.',
     messageNotValidateDataApiJokes1:
         'Not a valid data set from the API Jokes 1',
     messageNotValidateDataApiJokes2:
